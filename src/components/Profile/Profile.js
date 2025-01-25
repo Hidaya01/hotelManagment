@@ -18,7 +18,7 @@ function Profile() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="profile-form" onSubmit={handleSubmit}>
       <h2>Add Profile</h2>
       <input
         type="text"

@@ -1,29 +1,115 @@
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('https://example.com/your-image.jpg'); /* Remplacez par l'URL de votre image */
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Home.css */
+
+.home-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  background: rgba(230, 236, 249, 0.85); /* Slightly transparent to show the gradient through */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.home-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: rotate(30deg);
+  z-index: -1;
+  animation: rotateGradient 6s infinite linear;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(30deg);
   }
-  
-  div {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Fond semi-transparent pour le texte */
+  100% {
+    transform: rotate(390deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-container h1 {
+  color: #333;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.home-container p {
+  color: #666;
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.home-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+button a:hover {
+  color: white; /* Ensure link color doesn't change on hover */
+}
+
+/* Add responsiveness */
+@media screen and (max-width: 600px) {
+  .home-container {
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  h1 {
-    color: #333;
-    margin-bottom: 10px;
+
+  .home-container h1 {
+    font-size: 2em;
   }
-  
-  p {
-    color: #666;
+
+  .home-container p {
+    font-size: 1em;
   }
-  
+}

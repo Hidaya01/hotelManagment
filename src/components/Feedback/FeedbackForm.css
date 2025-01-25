@@ -1,32 +1,64 @@
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* FeedbackForm.css */
+
+#feedback-form {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.85); /* Slightly transparent */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+#feedback-form h2 {
+  color: #007BFF;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#feedback-form textarea {
+  width: calc(100% - 20px);
+  height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  resize: vertical; /* Allows vertical resizing only */
+}
+
+#feedback-form button {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#feedback-form button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+#success-message {
+  color: #28a745;
+  font-size: 1.2em;
+  margin-top: 15px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  textarea {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: vertical;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  button {
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+}

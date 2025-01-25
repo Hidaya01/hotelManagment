@@ -4,27 +4,30 @@ import { updateReservation, deleteReservation } from '../../redux/slices/reserva
 import './ReservationList.css';
 
 function ReservationList() {
-  const reservations = useSelector((state) => state.reservations || []); // Ajoutez une valeur par défaut vide
+  const reservations = useSelector((state) => state.reservations || []);
   const dispatch = useDispatch();
   const [editingReservation, setEditingReservation] = useState(null);
   const [city, setCity] = useState('');
-  const [date, setDate] = useState('');
+  const [checkInDate, setCheckInDate] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
   const [roomType, setRoomType] = useState('');
 
   const handleEdit = (reservation) => {
     setEditingReservation(reservation.id);
     setCity(reservation.city);
-    setDate(reservation.date);
+    setCheckInDate(reservation.checkInDate);
+    setCheckOutDate(reservation.checkOutDate);
     setRoomType(reservation.roomType);
   };
 
   const handleUpdate = (e) => {
     e.preventDefault();
     if (editingReservation) {
-      dispatch(updateReservation({ id: editingReservation, city, date, roomType }));
+      dispatch(updateReservation({ id: editingReservation, city, checkInDate, checkOutDate, roomType }));
       setEditingReservation(null);
       setCity('');
-      setDate('');
+      setCheckInDate('');
+      setCheckOutDate('');
       setRoomType('');
     }
   };
@@ -36,7 +39,7 @@ function ReservationList() {
   };
 
   return (
-    <div className="reservation-list-container">
+    <div id="reservation-list-container">
       <h2>Reservation List</h2>
       <ul>
         {reservations.map((reservation) => (
@@ -49,25 +52,42 @@ function ReservationList() {
                   onChange={(e) => setCity(e.target.value)}
                   placeholder="City"
                 />
-                <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  placeholder="Date"
-                />
-                <input
-                  type="text"
-                  value={roomType}
-                  onChange={(e) => setRoomType(e.target.value)}
-                  placeholder="Room Type"
-                />
-                <button type="submit">Update</button>
+                <label>
+                  Check-in Date:
+                  <input
+                    type="date"
+                    value={checkInDate}
+                    onChange={(e) => setCheckInDate(e.target.value)}
+                  />
+                </label>
+                <label>
+                  Check-out Date:
+                  <input
+                    type="date"
+                    value={checkOutDate}
+                    onChange={(e) => setCheckOutDate(e.target.value)}
+                  />
+                </label>
+                <label>
+                  Room Type:
+                  <select
+                    value={roomType}
+                    onChange={(e) => setRoomType(e.target.value)}
+                  >
+                    <option value="single">Single</option>
+                    <option value="double">Double</option>
+                    <option value="suite">Suite</option>
+                  </select>
+                </label>
+                <button className="update-button" type="submit">Update</button>
               </form>
             ) : (
               <>
-                <span>{reservation.city} - {reservation.date} - {reservation.roomType}</span>
-                <button onClick={() => handleEdit(reservation)}>Edit</button>
-                <button onClick={() => handleDelete(reservation.id)}>Delete</button>
+                <span>{reservation.city} - {reservation.checkInDate} to {reservation.checkOutDate} - {reservation.roomType}</span>
+                <div className="buttons">
+                  <button className="edit-button" onClick={() => handleEdit(reservation)}>Edit</button>
+                  <button className="delete-button" onClick={() => handleDelete(reservation.id)}>Delete</button>
+                </div>
               </>
             )}
           </li>

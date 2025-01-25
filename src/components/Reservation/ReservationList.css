@@ -1,29 +1,101 @@
-ul {
-    list-style-type: none;
-    padding: 0;
+/* ReservationList.css */
+
+#reservation-list-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.85); /* Slightly transparent */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+#reservation-list-container h2 {
+  color: #007BFF;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+#reservation-list-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#reservation-list-container ul li {
+  background: #f9f9f9;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#reservation-list-container ul li form {
+  display: flex;
+  flex-grow: 1;
+  gap: 15px;
+}
+
+#reservation-list-container ul li input, #reservation-list-container ul li select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#reservation-list-container ul li .buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* General Button Styles */
+#reservation-list-container ul li button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Edit Button */
+#reservation-list-container ul li .edit-button {
+  background-color: #28a745; /* Green */
+}
+
+#reservation-list-container ul li .edit-button:hover {
+  background-color: #218838;
+}
+
+/* Delete Button */
+#reservation-list-container ul li .delete-button {
+  background-color: #dc3545; /* Red */
+}
+
+#reservation-list-container ul li .delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Update Button */
+#reservation-list-container ul li .update-button {
+  background-color: #007bff; /* Blue */
+}
+
+#reservation-list-container ul li .update-button:hover {
+  background-color: #0056b3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  button {
-    padding: 5px 10px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #ff4d4d;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #ff1a1a;
-  }
-  
+}

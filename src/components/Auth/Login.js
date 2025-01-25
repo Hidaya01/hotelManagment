@@ -5,7 +5,7 @@ import { validateEmail } from '../../services/api';
 import { login } from '../../redux/slices/authSlice';
 import './Login.css';
 
-function Login() {
+function Login({ setIsAuthenticated }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -18,6 +18,7 @@ function Login() {
       const result = await validateEmail(email);
       if (result.length > 0) {
         dispatch(login({ email }));
+        setIsAuthenticated(true); // Set authenticated state to true
         navigate('/home', { state: { email } });
       } else {
         setError('Access denied. Email not recognized.');
@@ -29,7 +30,7 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="login-form" onSubmit={handleSubmit}>
       <h2>Log in</h2>
       <input
         type="email"
@@ -46,7 +47,7 @@ function Login() {
         required
       />
       <button type="submit">Login</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p id="error-message">{error}</p>}
     </form>
   );
 }

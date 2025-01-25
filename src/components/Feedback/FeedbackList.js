@@ -25,7 +25,7 @@ function FeedbackList() {
   };
 
   return (
-    <div className="feedback-list">
+    <div id="feedback-list">
       <h2>Feedback List</h2>
       <ul>
         {feedbacks.map((feedback) => (
@@ -39,12 +39,14 @@ function FeedbackList() {
             ) : (
               feedback.content
             )}
-            {editId === feedback.id ? (
-              <button onClick={() => handleUpdate(feedback.id)}>Update</button>
-            ) : (
-              <button onClick={() => handleEdit(feedback)}>Edit</button>
-            )}
-            <button onClick={() => handleDelete(feedback.id)}>Delete</button>
+            <div className="buttons">
+              {editId === feedback.id ? (
+                <button className="update-button" onClick={() => handleUpdate(feedback.id)}>Update</button>
+              ) : (
+                <button className="edit-button" onClick={() => handleEdit(feedback)}>Edit</button>
+              )}
+              <button className="delete-button" onClick={() => handleDelete(feedback.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
@@ -53,3 +55,4 @@ function FeedbackList() {
 }
 
 export default FeedbackList;
+  

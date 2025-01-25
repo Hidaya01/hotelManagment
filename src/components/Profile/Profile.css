@@ -1,45 +1,55 @@
-.profile-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Profile.css */
+
+#profile-form {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.85); /* Slightly transparent */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+#profile-form h2 {
+  color: #007BFF;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#profile-form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+#profile-form button {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#profile-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .delete-button {
-    margin-top: 10px;
-    background-color: #ff4d4d;
-  }
-  
-  .delete-button:hover {
-    background-color: #ff1a1a;
-  }
-  
+}

@@ -5,20 +5,25 @@ import './ReservationForm.css';
 
 function ReservationForm() {
   const [city, setCity] = useState('');
-  const [date, setDate] = useState('');
+  const [checkInDate, setCheckInDate] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
   const [roomType, setRoomType] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addReservation({ id: Date.now(), city, date, roomType }));
+    dispatch(addReservation({ id: Date.now(), city, checkInDate, checkOutDate, roomType }));
     setCity('');
-    setDate('');
+    setCheckInDate('');
+    setCheckOutDate('');
     setRoomType('');
+    setSuccessMessage('Reservation added successfully!');
+    setTimeout(() => setSuccessMessage(''), 3000); // Hide message after 3 seconds
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="reservation-form" onSubmit={handleSubmit}>
       <h2>New Reservation</h2>
       <input
         type="text"
@@ -26,19 +31,36 @@ function ReservationForm() {
         onChange={(e) => setCity(e.target.value)}
         placeholder="City"
       />
-      <input
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-        placeholder="Date"
-      />
-      <input
-        type="text"
-        value={roomType}
-        onChange={(e) => setRoomType(e.target.value)}
-        placeholder="Room Type"
-      />
+      <label>
+        Check-in Date:
+        <input
+          type="date"
+          value={checkInDate}
+          onChange={(e) => setCheckInDate(e.target.value)}
+        />
+      </label>
+      <label>
+        Check-out Date:
+        <input
+          type="date"
+          value={checkOutDate}
+          onChange={(e) => setCheckOutDate(e.target.value)}
+        />
+      </label>
+      <label>
+        Room Type:
+        <select
+          value={roomType}
+          onChange={(e) => setRoomType(e.target.value)}
+        >
+          <option value="">Select a room type</option>
+          <option value="single">Single</option>
+          <option value="double">Double</option>
+          <option value="suite">Suite</option>
+        </select>
+      </label>
       <button type="submit">Add Reservation</button>
+      {successMessage && <p id="success-message">{successMessage}</p>}
     </form>
   );
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import './About.css';
 import Footer from './Footer';
+
 function About() {
   return (
-    <div className="about-container">
+    <div id="about-container" >
       <h1>About Our Hotel Reservation System</h1>
       <p>
         Welcome to our Hotel Reservation System! This application allows you to book hotels in various cities, manage your reservations, and update your profile. Our goal is to provide a seamless and user-friendly experience for all our customers.
@@ -19,9 +20,8 @@ function About() {
       <p>
         Developed by a dedicated team of professionals, this project is built using React, Redux Toolkit, and React Router. We hope you enjoy using our system and find it helpful for all your hotel booking needs.
       </p>
-      <Footer/>
+      <Footer />
     </div>
-    
   );
 }
 
