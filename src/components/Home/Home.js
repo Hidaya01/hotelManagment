@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
-function Home() {
+function Home({ isAuthenticated }) {
   const location = useLocation();
   
   const { email } = location.state || { email: 'Guest' };
@@ -13,7 +13,9 @@ function Home() {
       <h1>Welcome to Hotel Reservation, {email}!</h1>
       <p>This is your home page.</p>
       <p>Choose your city and book your stay with us!</p>
-      <button><Link to='/login'>Login</Link></button>
+      {!isAuthenticated && (
+        <button><Link to='/login'>Login</Link></button>
+      )}
     </div>
   );
 }
