@@ -13,16 +13,17 @@ import UserNavbar from './components/Navbar/UserNavbar';
 import './App.css';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication status
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
 
   return (
     <div className="App">
-    {isAuthenticated ? (
+      {isAuthenticated ? (
         <UserNavbar setIsAuthenticated={setIsAuthenticated} />
       ) : (
         <VisitorNavbar />
-      )}      <Routes>
-        <Route path="/home" element={<Home />} />
+      )}
+      <Routes>
+        <Route path="/home" element={<Home isAuthenticated={isAuthenticated} />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/reservations" element={<ReservationList />} />
