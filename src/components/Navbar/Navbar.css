@@ -32,6 +32,21 @@
   color: black;
 }
 
+.navbar ul li .logoutbtn {
+  padding: 14px 16px;
+  background-color: #dc3545; /* Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.navbar ul li .logoutbtn:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
 /* Add responsiveness */
 @media screen and (max-width: 600px) {
   .navbar ul {
