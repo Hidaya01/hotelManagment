@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateProfile } from '../../redux/slices/profileSlice';
+import { useDispatch } from 'react-redux';
+import { addProfile } from '../../redux/slices/profileSlice';
 import './Profile.css';
 
 function Profile() {
-  const profile = useSelector((state) => state.profile);
-  const [name, setName] = useState(profile.name);
-  const [email, setEmail] = useState(profile.email);
-  const [phone, setPhone] = useState(profile.phone);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProfile({ name, email, phone }));
+    dispatch(addProfile({ id: Date.now(), name, email, phone }));
+    setName('');
+    setEmail('');
+    setPhone('');
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Profile</h2>
+      <h2>Add Profile</h2>
       <input
         type="text"
         value={name}
@@ -36,7 +38,7 @@ function Profile() {
         onChange={(e) => setPhone(e.target.value)}
         placeholder="Phone"
       />
-      <button type="submit">Update Profile</button>
+      <button type="submit">Add Profile</button>
     </form>
   );
 }

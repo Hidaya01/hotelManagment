@@ -1,6 +1,6 @@
 import React from 'react';
 import './About.css';
-
+import Footer from './Footer';
 function About() {
   return (
     <div className="about-container">
@@ -19,7 +19,9 @@ function About() {
       <p>
         Developed by a dedicated team of professionals, this project is built using React, Redux Toolkit, and React Router. We hope you enjoy using our system and find it helpful for all your hotel booking needs.
       </p>
+      <Footer/>
     </div>
+    
   );
 }
 

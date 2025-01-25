@@ -1,5 +1,5 @@
-.profile-container {
-    max-width: 400px;
+.profile-list-container {
+    max-width: 600px;
     margin: auto;
     padding: 20px;
     background-color: #ffffff;
@@ -7,10 +7,25 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
   form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
   }
   
   input {
@@ -21,8 +36,8 @@
   }
   
   button {
-    padding: 10px;
-    font-size: 16px;
+    padding: 5px 10px;
+    font-size: 14px;
     color: #fff;
     background-color: #007bff;
     border: none;
@@ -34,8 +49,11 @@
     background-color: #0056b3;
   }
   
+  button + button {
+    margin-left: 10px;
+  }
+  
   .delete-button {
-    margin-top: 10px;
     background-color: #ff4d4d;
   }
   

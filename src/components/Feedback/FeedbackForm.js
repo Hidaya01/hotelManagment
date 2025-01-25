@@ -4,24 +4,25 @@ import { addFeedback } from '../../redux/slices/feedbackSlice';
 import './FeedbackForm.css';
 
 function FeedbackForm() {
-  const [message, setMessage] = useState('');
+  const [content, setContent] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addFeedback({ message }));
-    setMessage('');
+    dispatch(addFeedback({ id: Date.now(), content }));
+    setContent('');
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Leave Your Feedback</h2>
+      <h2>New Feedback</h2>
       <textarea
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        placeholder="Your feedback"
+        type="text"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="Feedback"
       />
-      <button type="submit">Submit Feedback</button>
+      <button type="submit">Add Feedback</button>
     </form>
   );
 }

@@ -9,7 +9,9 @@ const store = configureStore({
     auth: authReducer,
     reservations: reservationReducer,
     profile: profileReducer,
+    profiles: profileReducer,
     feedbacks: feedbackReducer,
+    feedback: feedbackReducer,
   },
 });
 

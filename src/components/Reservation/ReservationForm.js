@@ -11,11 +11,15 @@ function ReservationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addReservation({ city, date, roomType }));
+    dispatch(addReservation({ id: Date.now(), city, date, roomType }));
+    setCity('');
+    setDate('');
+    setRoomType('');
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>New Reservation</h2>
       <input
         type="text"
         value={city}
@@ -26,6 +30,7 @@ function ReservationForm() {
         type="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
+        placeholder="Date"
       />
       <input
         type="text"

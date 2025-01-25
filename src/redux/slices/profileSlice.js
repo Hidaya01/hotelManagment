@@ -1,18 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const profileSlice = createSlice({
-  name: 'profile',
-  initialState: {
-    name: '',
-    email: '',
-    phone: '',
-  },
+  name: 'profiles',
+  initialState: [], // Assurez-vous que l'état initial est un tableau vide
   reducers: {
+    addProfile(state, action) {
+      state.push(action.payload);
+    },
     updateProfile(state, action) {
-      return { ...state, ...action.payload };
+      const index = state.findIndex(profile => profile.id === action.payload.id);
+      if (index !== -1) {
+        state[index] = action.payload;
+      }
+    },
+    deleteProfile(state, action) {
+      return state.filter(profile => profile.id !== action.payload);
     },
   },
 });
 
-export const { updateProfile } = profileSlice.actions;
+export const { addProfile, updateProfile, deleteProfile } = profileSlice.actions;
 export default profileSlice.reducer;
